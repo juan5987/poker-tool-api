@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS "user" (
     "username" VARCHAR(128) NOT NULL,
     "email" VARCHAR(255) NOT NULL,
     "password" TEXT NOT NULL,
-    "key_password" TEXT,
+    "confirmationCode" TEXT,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );

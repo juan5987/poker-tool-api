@@ -1,0 +1,122 @@
+App 32689 output: internal/modules/cjs/loader.js:638
+App 32689 output:     throw err;
+App 32689 output:     ^
+App 32689 output: Error: Cannot find module 'email-validator'
+App 32689 output:     at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)
+App 32689 output:     at Function.Module._load (internal/modules/cjs/loader.js:562:25)
+App 32689 output:     at Module.require (internal/modules/cjs/loader.js:692:17)
+App 32689 output:     at Module.require (/opt/cpanel/ea-ruby27/root/usr/share/passenger/helper-scripts/node-loader.js:80:25)
+App 32689 output:     at require (internal/modules/cjs/helpers.js:25:18)
+App 32689 output:     at Object.<anonymous> (/home/vuwu9330/api/app/controllers/auth.js:1:17)
+App 32689 output:     at Module._compile (internal/modules/cjs/loader.js:778:30)
+App 32689 output:     at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+App 32689 output:     at Module.load (internal/modules/cjs/loader.js:653:32)
+App 32689 output:     at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+App 913 output: internal/modules/cjs/loader.js:638
+App 913 output:     throw err;
+App 913 output:     ^
+App 913 output: Error: Cannot find module 'email-validator'
+App 913 output:     at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)
+App 913 output:     at Function.Module._load (internal/modules/cjs/loader.js:562:25)
+App 913 output:     at Module.require (internal/modules/cjs/loader.js:692:17)
+App 913 output:     at Module.require (/opt/cpanel/ea-ruby27/root/usr/share/passenger/helper-scripts/node-loader.js:80:25)
+App 913 output:     at require (internal/modules/cjs/helpers.js:25:18)
+App 913 output:     at Object.<anonymous> (/home/vuwu9330/api/app/controllers/auth.js:1:17)
+App 913 output:     at Module._compile (internal/modules/cjs/loader.js:778:30)
+App 913 output:     at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+App 913 output:     at Module.load (internal/modules/cjs/loader.js:653:32)
+App 913 output:     at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+App 2454 output: internal/modules/cjs/loader.js:638
+App 2454 output:     throw err;
+App 2454 output:     ^
+App 2454 output: Error: Cannot find module 'email-validator'
+App 2454 output:     at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)
+App 2454 output:     at Function.Module._load (internal/modules/cjs/loader.js:562:25)
+App 2454 output:     at Module.require (internal/modules/cjs/loader.js:692:17)
+App 2454 output:     at Module.require (/opt/cpanel/ea-ruby27/root/usr/share/passenger/helper-scripts/node-loader.js:80:25)
+App 2454 output:     at require (internal/modules/cjs/helpers.js:25:18)
+App 2454 output:     at Object.<anonymous> (/home/vuwu9330/api/app/controllers/auth.js:1:17)
+App 2454 output:     at Module._compile (internal/modules/cjs/loader.js:778:30)
+App 2454 output:     at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+App 2454 output:     at Module.load (internal/modules/cjs/loader.js:653:32)
+App 2454 output:     at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+App 4003 output: Listening on port 3001
+App 4249 output: Listening on port 3001
+App 26690 output: internal/modules/cjs/loader.js:638
+App 26690 output:     throw err;
+App 26690 output:     ^
+App 26690 output: Error: Cannot find module 'bcrypt'
+App 26690 output:     at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)
+App 26690 output:     at Function.Module._load (internal/modules/cjs/loader.js:562:25)
+App 26690 output:     at Module.require (internal/modules/cjs/loader.js:692:17)
+App 26690 output:     at Module.require (/opt/cpanel/ea-ruby27/root/usr/share/passenger/helper-scripts/node-loader.js:80:25)
+App 26690 output:     at require (internal/modules/cjs/helpers.js:25:18)
+App 26690 output:     at Object.<anonymous> (/home/vuwu9330/api/app/controllers/auth.js:3:16)
+App 26690 output:     at Module._compile (internal/modules/cjs/loader.js:778:30)
+App 26690 output:     at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+App 26690 output:     at Module.load (internal/modules/cjs/loader.js:653:32)
+App 26690 output:     at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+App 26916 output: Listening on port 3001
+App 27162 output: Listening on port 3001
+App 19146 output: Listening on port 3001
+App 25674 output: Listening on port 3001
+App 9849 output: Listening on port 3001
+App 9849 output: { error: la colonne « confirmationCode » n'existe pas
+App 9849 output:     at Parser.parseErrorMessage (/home/vuwu9330/nodevenv/api/10/lib/node_modules/pg-protocol/dist/parser.js:287:98)
+App 9849 output:     at Parser.handlePacket (/home/vuwu9330/nodevenv/api/10/lib/node_modules/pg-protocol/dist/parser.js:126:29)
+App 9849 output:     at Parser.parse (/home/vuwu9330/nodevenv/api/10/lib/node_modules/pg-protocol/dist/parser.js:39:38)
+App 9849 output:     at Socket.stream.on (/home/vuwu9330/nodevenv/api/10/lib/node_modules/pg-protocol/dist/index.js:11:42)
+App 9849 output:     at Socket.emit (events.js:198:13)
+App 9849 output:     at addChunk (_stream_readable.js:288:12)
+App 9849 output:     at readableAddChunk (_stream_readable.js:269:11)
+App 9849 output:     at Socket.Readable.push (_stream_readable.js:224:10)
+App 9849 output:     at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+App 9849 output:   length: 111,
+App 9849 output:   name: 'error',
+App 9849 output:   severity: 'ERREUR',
+App 9849 output:   code: '42703',
+App 9849 output:   detail: undefined,
+App 9849 output:   hint: undefined,
+App 9849 output:   position: '28',
+App 9849 output:   internalPosition: undefined,
+App 9849 output:   internalQuery: undefined,
+App 9849 output:   where: undefined,
+App 9849 output:   schema: undefined,
+App 9849 output:   table: undefined,
+App 9849 output:   column: undefined,
+App 9849 output:   dataType: undefined,
+App 9849 output:   constraint: undefined,
+App 9849 output:   file: 'parse_expr.c',
+App 9849 output:   line: '768',
+App 9849 output:   routine: 'transformColumnRef' }
+App 9849 output: Problème lors de la requête postUser
+App 9849 output: { error: la colonne « confirmationCode » n'existe pas
+App 9849 output:     at Parser.parseErrorMessage (/home/vuwu9330/nodevenv/api/10/lib/node_modules/pg-protocol/dist/parser.js:287:98)
+App 9849 output:     at Parser.handlePacket (/home/vuwu9330/nodevenv/api/10/lib/node_modules/pg-protocol/dist/parser.js:126:29)
+App 9849 output:     at Parser.parse (/home/vuwu9330/nodevenv/api/10/lib/node_modules/pg-protocol/dist/parser.js:39:38)
+App 9849 output:     at Socket.stream.on (/home/vuwu9330/nodevenv/api/10/lib/node_modules/pg-protocol/dist/index.js:11:42)
+App 9849 output:     at Socket.emit (events.js:198:13)
+App 9849 output:     at addChunk (_stream_readable.js:288:12)
+App 9849 output:     at readableAddChunk (_stream_readable.js:269:11)
+App 9849 output:     at Socket.Readable.push (_stream_readable.js:224:10)
+App 9849 output:     at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+App 9849 output:   length: 111,
+App 9849 output:   name: 'error',
+App 9849 output:   severity: 'ERREUR',
+App 9849 output:   code: '42703',
+App 9849 output:   detail: undefined,
+App 9849 output:   hint: undefined,
+App 9849 output:   position: '28',
+App 9849 output:   internalPosition: undefined,
+App 9849 output:   internalQuery: undefined,
+App 9849 output:   where: undefined,
+App 9849 output:   schema: undefined,
+App 9849 output:   table: undefined,
+App 9849 output:   column: undefined,
+App 9849 output:   dataType: undefined,
+App 9849 output:   constraint: undefined,
+App 9849 output:   file: 'parse_expr.c',
+App 9849 output:   line: '768',
+App 9849 output:   routine: 'transformColumnRef' }
+App 9849 output: Problème lors de la requête postUser
+App 9849 output: Problème lors de la requête postUser

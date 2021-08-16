@@ -1,11 +1,11 @@
 BEGIN;
 
-INSERT INTO "user" ("id", "username", "email", "password") VALUES
-(1, 'Juan', 'juan@email.fr', '1234'),
-(2, 'Juan2', 'juan2@email.fr', '1234'),
-(3, 'Juan3', 'juan3@email.fr', '1234'),
-(4, 'Juan4', 'juan4@email.fr', '1234'),
-(5, 'Juan5', 'juan5@email.fr', '1234');
+INSERT INTO "user" ("id", "username", "email", "password", "confirmationCode") VALUES
+(1, 'Juan', 'juan@email.fr', '1234', null),
+(2, 'Juan2', 'juan2@email.fr', '1234', null),
+(3, 'Juan3', 'juan3@email.fr', '1234', null),
+(4, 'Juan4', 'juan4@email.fr', '1234', null),
+(5, 'Juan5', 'juan5@email.fr', '1234', null);
 
 
 INSERT INTO "tournament" ("id", "name", "date", "location", "nb_players", "speed", "starting_stack", "buy_in", "status", "small_blind", "chips_user", "comments", "user_id") VALUES
