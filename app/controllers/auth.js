@@ -150,11 +150,10 @@ module.exports = authController = {
 
                 if(result.rows[0]){
                     dataMapper.activateAccount(confirmationCode, (error, result) => {
-                        //TODO: modifier URL pour PROD
-                        res.status(200).redirect('http://dev.pokertool.fr');
+                        res.status(200).end();
                     })
                 } else {
-                    res.status(401).redirect('http://dev.pokertool.fr');
+                    res.status(401).end();
                 }
                 
             }
