@@ -20,3 +20,15 @@ exports.getUserByConfirmationCode = (confirmationCode, callback) => {
 exports.activateAccount = (confirmationCode, callback) => {
     client.query(`UPDATE "user" SET "confirmationCode"='activated' WHERE "confirmationCode"=$1`,[confirmationCode], callback);
 }
+
+exports.updatePassword = (password, email, callback) => {
+    client.query(`UPDATE "user" SET "password"=$1, "forgotPasswordCode"='changed'  WHERE "email"=$2`, [password, email], callback);
+}
+
+exports.insertForgotPasswordCode = (forgotPasswordCode, email, date, callback) => {
+    client.query(`UPDATE "user" SET "forgotPasswordCode"=$1, "updated_at"=$3, "passwordCanBeModified"='true' WHERE "email"=$2`, [forgotPasswordCode, email, date], callback);
+}
+
+exports.getUserByForgotPasswordCode = (forgotPasswordCode, callback) => {
+    client.query(`SELECT * FROM "user" WHERE "forgotPasswordCode"=$1`, [forgotPasswordCode], callback);
+}

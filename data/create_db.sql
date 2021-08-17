@@ -18,8 +18,10 @@ CREATE TABLE IF NOT EXISTS "user" (
     "email" VARCHAR(255) NOT NULL,
     "password" TEXT NOT NULL,
     "confirmationCode" TEXT,
+    "forgotPasswordCode" TEXT,
+    "passwordCanBeModified" BOOLEAN,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-    "updated_at" TIMESTAMPTZ
+    "updated_at" TEXT
 );
 
 CREATE TABLE IF NOT EXISTS "tournament" (
@@ -38,7 +40,7 @@ CREATE TABLE IF NOT EXISTS "tournament" (
     "comments" TEXT,
     "user_id" INTEGER NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
-    "updated_at" TIMESTAMPTZ
+    "updated_at" TEXT
 );
 
 CREATE TABLE IF NOT EXISTS "structure" (

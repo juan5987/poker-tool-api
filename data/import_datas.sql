@@ -1,11 +1,7 @@
 BEGIN;
 
 INSERT INTO "user" ("id", "username", "email", "password", "confirmationCode") VALUES
-(1, 'Juan', 'juan@email.fr', '1234', null),
-(2, 'Juan2', 'juan2@email.fr', '1234', null),
-(3, 'Juan3', 'juan3@email.fr', '1234', null),
-(4, 'Juan4', 'juan4@email.fr', '1234', null),
-(5, 'Juan5', 'juan5@email.fr', '1234', null);
+(1, 'test', 'test@email.fr', '1234', null);
 
 
 INSERT INTO "tournament" ("id", "name", "date", "location", "nb_players", "speed", "starting_stack", "buy_in", "status", "small_blind", "chips_user", "comments", "user_id") VALUES
@@ -43,12 +39,7 @@ INSERT INTO "chip" ("id", "quantity", "color", "value", "user_id") VALUES
 (2, 50, '#00b0ff', 20, 1),
 (3, 50, '#789f30', 50, 1),
 (4, 50, '#cec56c', 100, 1),
-(5, 50, '#212121', 1000, 1),
-(6, 50, '#dddddd', 10, 2),
-(7, 50, '#00b0ff', 20, 2),
-(8, 50, '#789f30', 50, 2),
-(9, 50, '#cec56c', 100, 2),
-(10, 50, '#212121', 1000, 2);
+(5, 50, '#212121', 1000, 1);
 
 INSERT INTO "cashprice" ("id", "position", "amount", "tournament_id") VALUES
 (1, 1, 100, 1),

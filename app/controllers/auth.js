@@ -7,6 +7,7 @@ const dataMapper = require('../dataMapper');
 const generateToken = require('../../utils/jwt');
 const verifPassword = require('../../utils/verifPassword');
 const sendEmailConfirmation = require('../../utils/sendEmailConfirmation');
+const sendEmailUpdatePassword = require('../../utils/sendEmailUpdatePassword');
 
 module.exports = authController = {
 
@@ -56,7 +57,6 @@ module.exports = authController = {
                                 return res.status(401).json({
                                     message: "Email ou mot de passe incorrect."
                                 });
-
                             }
                         });
                     } else {
@@ -159,5 +159,79 @@ module.exports = authController = {
             }
 
         })
+    },
+    sendEmailToChangePassword: (req, res) => {
+        const email = req.body.email;
+
+        dataMapper.getUserByMail(email, (error, result) => {
+            if(error){
+                console.log(error);
+            } else {
+                if(result.rows[0]){
+                    const date = Date.now();
+                    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        let forgotPasswordCode = '';
+                        forgotPasswordCode+=result.rows[0].username;
+                        for (let i = 0; i < 25; i++) {
+                            forgotPasswordCode += characters[Math.floor(Math.random() * characters.length)];
+                        }
+                        //Si le champ a été MAJ il y a plus de 5 minutes
+                        if(Date.now() - result.rows[0].updated_at > (1000*60*5)){
+                            dataMapper.insertForgotPasswordCode(forgotPasswordCode, email, date, (error, result) => {
+                                if(error){
+                                    console.log(error);
+                                } else{
+                                    sendEmailUpdatePassword(forgotPasswordCode, email);
+                                    res.status(200).end();
+                                }
+                            });
+                        } else {
+                            res.status(401).json({message: "Un email a déjà été envoyé récemment, rééssayez dans quelques minutes."})
+                        }
+
+                }else{
+                    res.status(401).json({message: "Aucun compte associé à cette adresse email."})
+                }
+            }
+        });
+        
+    },
+    updatePassword: (req, res) => {
+
+        if(!req.body.password || !req.body.passwordConfirm){
+            res.status(400).json({message: "Un champ n'est pas renseigné."});
+        } else {
+            const forgotPasswordCode = req.params.forgotPasswordCode;
+            let password = req.body.password;
+            password = sanitizeHtml(password);
+    
+            const passwordConfirm = sanitizeHtml(req.body.passwordConfirm);
+    
+            if(password !== passwordConfirm){
+                res.status(400).json({message: "Les mots de passe ne correspondent pas."});
+            } else {
+
+                if (!verifPassword(password)) {
+                    return res.status(400).json({ message: "Le mot de passe doit contenir au moins 8 caractères dont une lettre minuscule, une lettre majuscule et un chiffre." });
+                } else {
+                    dataMapper.getUserByForgotPasswordCode(forgotPasswordCode, (error, result) => {
+                        if(error){
+                            console.log(error);
+                        } else {
+                            if(result.rows[0]){
+                                bcrypt.hash(password, saltRounds, function (err, hash) {
+                                    const email = result.rows[0].email;
+                                    dataMapper.updatePassword(hash, email, (error, result => {
+                                    res.status(200).end();
+                                }))
+                                });
+                            } else {
+                                res.status(401).json({message:"Impossible de trouver le profil associé à cette url. Le lien a peut-être expiré. Cliquez sur le bouton connexion puis mot de passe oublié pour recevoir un nouveau mail de redéfinition du mot de passe."})
+                            }
+                        }
+                    })
+                }
+            }
+        }
     },
 }
