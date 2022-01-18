@@ -1,8 +1,7 @@
 BEGIN;
 
 INSERT INTO "user" ("id", "username", "email", "password", "confirmationCode") VALUES
-(1, 'test', 'test@email.fr', '1234', null);
-
+(1, 'test', 'test@email.fr', '$2b$12$k38Q/3Jz4Z76TJdShmcBD.91F8fn0hZrhXJuXaB5HmsrSmiZl8cVm', 'activated');
 
 INSERT INTO "tournament" ("id", "name", "date", "location", "nb_players", "speed", "starting_stack", "buy_in", "status", "small_blind", "chips_user", "comments", "user_id") VALUES
 (1, 'Tournoi 1', '2021-06-13T11:00:11.832Z', 'Chez Yann', 6, 20, 1500, 0, 'terminé', 10, false, '', 1),
@@ -35,11 +34,11 @@ INSERT INTO "structure" ("id", "stage", "small_blind", "big_blind", "tournament_
 (18, 9, 2560, 5120, 2);
 
 INSERT INTO "chip" ("id", "quantity", "color", "value", "user_id") VALUES
-(1, 50, '#dddddd', 10, 1),
-(2, 50, '#00b0ff', 20, 1),
-(3, 50, '#789f30', 50, 1),
-(4, 50, '#cec56c', 100, 1),
-(5, 50, '#212121', 1000, 1);
+(6, 50, '#dddddd', 10, 1),
+(7, 50, '#00b0ff', 20, 1),
+(8, 50, '#789f30', 50, 1),
+(9, 50, '#cec56c', 100, 1),
+(10, 50, '#212121', 1000, 1);
 
 INSERT INTO "cashprice" ("id", "position", "amount", "tournament_id") VALUES
 (1, 1, 100, 1),

@@ -226,12 +226,32 @@ module.exports = authController = {
                                 }))
                                 });
                             } else {
-                                res.status(401).json({message:"Impossible de trouver le profil associé à cette url. Le lien a peut-être expiré. Cliquez sur le bouton connexion puis mot de passe oublié pour recevoir un nouveau mail de redéfinition du mot de passe."})
+                                res.status(401).json({message:"Impossible de trouver le profil associé à cette url. Le lien a peut-être expiré ou le mot de passe a déjà été changé. Cliquez sur le bouton connexion puis mot de passe oublié pour recevoir un nouveau mail de redéfinition du mot de passe."})
                             }
                         }
                     })
                 }
             }
         }
+    },
+    getProfile: (req, res) => {
+        dataMapper.getUserById(req.params.userId, (error, result) => {
+            if(!result){
+                console.log(error);
+                res.status(500).json({message: "Impossible de récupérer le profil."})
+            } else {
+                res.status(200).json({username: result.rows[0].username, email: result.rows[0].email});
+            }
+        })
+    },
+    updateProfile: (req, res) => {
+        const data = req.body;
+        const email = sanitizeHtml(data.email);
+        const password = sanitizeHtml(data.password);
+        const passwordConfirm = sanitizeHtml(data.passwordConfirm);
+        const username = sanitizeHtml(data.username);
+
+        console.log(email,password, passwordConfirm, username  )
+        res.status(200).end();
     },
 }

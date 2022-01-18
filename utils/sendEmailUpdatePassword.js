@@ -37,7 +37,7 @@ const sendEmailUpdatePassword = async (forgotPasswordCode, email) => {
                 <h1 style="text-align: center;">Redéfinissez votre mot de passe</h1>
                 <p style="text-align: center;">Vous avez oublié votre mot de passe ?</p>
                 <p style="text-align: center;">Pas de problème, vous pourrez redéfinir votre mot de passe en cliquant sur le bouton ci-dessous:</p>
-                <a style="background-color: #ee581e; text-decoration: none; color: white; font-size: 1.5rem; padding: 1rem; border-radius: 20px; display: block; width: min-content; white-space: nowrap; margin: 0 auto;" href="http://dev.pokertool.fr/forgot-password/${forgotPasswordCode}">Redéfinir mon mot de passe</a>
+                <a style="background-color: #ee581e; text-decoration: none; color: white; font-size: 1.5rem; padding: 1rem; border-radius: 20px; display: block; width: min-content; white-space: nowrap; margin: 0 auto;" href="${process.env.FRONT_URL}/forgot-password/${forgotPasswordCode}">Redéfinir mon mot de passe</a>
                 <p style="text-align: center;">Si vous n'êtes pas à l'origine de cette demande, vous pouvez ignorer cet email.</p>
                 <br/>
                 <p style="text-align: center;">A bientôt sur pokertool.fr !</p>

@@ -65,16 +65,16 @@ CREATE TABLE IF NOT EXISTS "chip" (
     "updated_at" TIMESTAMPTZ
 );
 
--- CREATE TABLE IF NOT EXISTS "distribution" (
---     --"id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
---     "id" serial PRIMARY KEY,
---     "quantity" INTEGER NOT NULL,
---     "color" VARCHAR(7) NOT NULL,
---     "value" INTEGER NOT NULL,
---     "tournament_id" INTEGER NOT NULL REFERENCES "tournament"("id") ON DELETE CASCADE,
---     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
---     "updated_at" TIMESTAMPTZ
--- );
+CREATE TABLE IF NOT EXISTS "distribution" (
+    --"id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "id" serial PRIMARY KEY,
+    "quantity" INTEGER NOT NULL,
+    "color" VARCHAR(7) NOT NULL,
+    "value" INTEGER NOT NULL,
+    "tournament_id" INTEGER NOT NULL REFERENCES "tournament"("id") ON DELETE CASCADE,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    "updated_at" TIMESTAMPTZ
+);
 
 CREATE TABLE IF NOT EXISTS "cashprice" (
     --"id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
