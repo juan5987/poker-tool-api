@@ -1,7 +1,5 @@
 const client = require('./database');
 
-
-
 const dataMapper = {
     //USER
     postUser : (username, email, password, confirmationCode, callback) => {
@@ -39,8 +37,14 @@ const dataMapper = {
     getUserByForgotPasswordCode: (forgotPasswordCode, callback) => {
         client.query(`SELECT * FROM "user" WHERE "forgotPasswordCode"=$1`, [forgotPasswordCode], callback);
     },
-    updateUser: (username, email, password, userId, callback) => {
+    updateUserWithoutPassword: (username, email, userId, callback) => {
+        client.query(`UPDATE "user" SET "username" = $1, "email" = $2 WHERE "id"= $3`, [username, email, userId], callback);
+    },
+    updateUserWithPassword: (username, email, password, userId, callback) => {
         client.query(`UPDATE "user" SET "username" = $1, "email"=$2, "password"=$3 WHERE "id"= $4`, [username, email, password, userId], callback);
+    },
+    deleteUserAccount: (userId, callback) => {
+        client.query(`DELETE FROM "user" WHERE "id" = $1`, [userId], callback);
     },
     // CHIPS
     getChipsByUserId: (userId, callback) => {
@@ -52,7 +56,20 @@ const dataMapper = {
     },
     removeChips: (userId, callback) => {
         client.query(`DELETE FROM "chip" WHERE "user_id"= $1`, [userId], callback);
-    }
+    },
+    // TOURNAMENTS
+    getTournaments: (userId, callback) => {
+        client.query(`SELECT * FROM "tournament" WHERE "user_id" = $1`, [userId], callback);
+    },
+    createTournament: (tournament, userId, callback) => {
+        client.query(`INSERT INTO "tournament" ("name", "date", "location", "nb_players", "speed", "starting_stack", "buy_in", "status", "small_blind", "chips_user", "comments", "user_id") 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`, 
+        [tournament.name, tournament.date, tournament.location, tournament.nbPlayer, tournament.speed, tournament.startingStack, tournament.buyIn, tournament.status,tournament.small_blind, tournament.chips_user, tournament.comment, userId], 
+        callback);
+    },
+    deleteTournament: (tournamentId, callback) => {
+        client.query(`DELETE FROM "tournament" WHERE "id" = $1`, [tournamentId], callback);
+    },
 }
 
 module.exports = dataMapper;

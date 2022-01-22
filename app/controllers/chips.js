@@ -8,11 +8,11 @@ module.exports = authController = {
         try {
             const userId = parseInt(req.params.userId);
 
-            const user = dataMapper.getUserById(userId, (error, result) => {
+            dataMapper.getUserById(userId, (error, result) => {
                 if (!result) {
                     return res.status(401).json({ message: `L'utilisateur ${userId} n'a pas été trouvé !` });
                 } else {
-                    const chips = dataMapper.getChipsByUserId(userId, (error, result) => {
+                    dataMapper.getChipsByUserId(userId, (error, result) => {
                         if (!result) {
                             return res.status(200).json({ message: `Pas de jetons.` });
                         } else {

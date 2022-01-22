@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS "tournament" (
     --"id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "id" serial PRIMARY KEY,
     "name" VARCHAR(128) NOT NULL,
-    "date" TIMESTAMPTZ NOT NULL,
+    "date" DATE NOT NULL,
     "location" TEXT NOT NULL,
     "nb_players" INTEGER NOT NULL,
     "speed" INTEGER NOT NULL,

@@ -8,6 +8,6 @@ PassengerStartupFile server.js
 # DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
 <IfModule Litespeed>
 SetEnv JWT_SECRET 7QA2h9DAn38vS1BZSMiaTQlhtLr4bgp8WNZ2KssYjoj2eIRWiXX1E68VHnPIu2Fe
-SetEnv PG_URL postgresql://vuwu9330_juan:pokertool@localhost/vuwu9330_pokertool
+SetEnv PG_URL postgresql://vuwu9330_juan:0588Xdsn!@localhost/vuwu9330_pokertool
 </IfModule>
 # DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
