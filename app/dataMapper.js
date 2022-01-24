@@ -70,6 +70,11 @@ const dataMapper = {
     deleteTournament: (tournamentId, callback) => {
         client.query(`DELETE FROM "tournament" WHERE "id" = $1`, [tournamentId], callback);
     },
+    updateTournament: (tournament, callback) => {
+        client.query(`UPDATE "tournament" 
+        SET "name" =$1, "date" =$2, "location" = $3, "nb_players"= $4, "speed" = $5, "starting_stack" = $6, "buy_in" = $7, "small_blind" = $8, "chips_user" = $9, "comments" = $10
+        WHERE "id" = $11`, [tournament.name, tournament.date, tournament.location, tournament.nbPlayer, tournament.speed, tournament.startingStack, tournament.buyIn, tournament.small_blind, tournament.chips_user, tournament.comment, tournament.id], callback);
+    }
 }
 
 module.exports = dataMapper;

@@ -72,4 +72,18 @@ module.exports = atournamentController = {
             console.error(error);
         }
     },
+    updateTournament: (req, res) => {
+        try {
+            const tournament = req.body.tournament
+            dataMapper.updateTournament(tournament, (error, result) => {
+                if(!result){
+                    console.log(error);
+                } else {
+                    res.status(200).end();
+                }
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    },
 }

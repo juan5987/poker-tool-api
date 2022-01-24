@@ -24,5 +24,6 @@ router.post('/api/chip/:userId', chipController.saveChips);
 router.get('/api/tournaments/:userId', tournamentController.getTournaments);
 router.post('/api/tournament/:userId', tournamentController.createTournament);
 router.delete('/api/tournament/:userId', tournamentController.deleteTournament);
+router.patch('/api/tournament/modify/:tournamentId', tournamentController.updateTournament);
 
 module.exports = router;
