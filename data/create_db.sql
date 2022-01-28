@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS "tournament" (
     "status" VARCHAR(128) NOT NULL,
     "small_blind" INTEGER NOT NULL,
     "chips_user" BOOLEAN NOT NULL DEFAULT FALSE,
+    "rebuy" TEXT,
     "comments" TEXT,
     "user_id" INTEGER NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),

@@ -8,6 +8,7 @@ const generateToken = require('../../utils/jwt');
 const verifPassword = require('../../utils/verifPassword');
 const sendEmailConfirmation = require('../../utils/sendEmailConfirmation');
 const sendEmailUpdatePassword = require('../../utils/sendEmailUpdatePassword');
+const client = require("../database");
 
 module.exports = authController = {
 

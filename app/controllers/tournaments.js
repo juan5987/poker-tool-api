@@ -1,3 +1,4 @@
+const { response } = require('express');
 const sanitizeHtml = require('sanitize-html');
 const dataMapper = require('../dataMapper');
 
@@ -11,7 +12,7 @@ module.exports = atournamentController = {
             dataMapper.getTournaments(userId, (error, result) => {
                 if (!result) {
                     console.log(error);
-                    res.status(500).json({ message: "La requête a échoué, contactez un administrateur." })
+                    res.status(500).json({ message: "La requête a échoué, contactez un administrateur." });
                 } else {
                     res.status(200).json({ tournaments: result.rows });
                 }
@@ -19,12 +20,13 @@ module.exports = atournamentController = {
 
         } catch (error) {
             console.log(error);
+            res.status(500).json({ message: "La requête a échoué, contactez un administrateur." });
         }
     },
     createTournament: (req, res) => {
         try {
             const userId = req.params.userId;
-            const tournament = req.body;
+            const tournament = req.body.tournament;
 
             if (!tournament.name ||
                 !tournament.date ||
@@ -39,17 +41,19 @@ module.exports = atournamentController = {
             if (tournament.startingStack <= tournament.small_blind) return res.status(401).json({ message: "La petite blind ne peut pas être supérieure ou égale au tapis de départ" });
             if (!tournament.comment) tournament.comment = "";
             tournament.status = "prévu";
+            tournament.prizePool = [];
 
-            //SI OK
-            dataMapper.createTournament(tournament, userId, (error, result) => {
+            dataMapper.createTournament(tournament, userId, async (error, result) => {
                 if (!result) {
                     console.error(error);
+                    return res.status(500).json({ message: "Impossible de créer le tournoi, veuillez contacter un administrateur." });
                 } else {
-                    return res.status(200).end();
+                    return res.status(200).json({ tournament: result.rows[0] });
                 }
             });
         } catch (error) {
             console.log(error);
+            res.status(500).json({ message: "Un problème est survenu, veuillez contacter un administrateur." });
         }
     },
     deleteTournament: (req, res) => {
@@ -70,20 +74,76 @@ module.exports = atournamentController = {
             }
         } catch (error) {
             console.error(error);
+            res.status(500).json({ message: "Un problème est survenu, veuillez contacter un administrateur." });
         }
     },
     updateTournament: (req, res) => {
         try {
             const tournament = req.body.tournament
             dataMapper.updateTournament(tournament, (error, result) => {
-                if(!result){
+                if (!result) {
                     console.log(error);
+                    return res.status(500).json({ message: "Problème lors de la modification du tournoi, veuillez contacter un administrateur." });
                 } else {
-                    res.status(200).end();
+                    return res.status(200).json({ id: result.rows[0].id });
                 }
             });
         } catch (error) {
             console.error(error);
+            return res.status(500).json({ message: "Un problème est survenu, veuillez contacter un administrateur." });
         }
+    },
+    getCashPrice: (req, res) => {
+
+        const tournamentId = req.params.tournamentId;
+
+        try {
+            dataMapper.getPrizePool(tournamentId, (error, result) => {
+                if (!result) {
+                    console.log(error);
+                    return res.status(500).json({ message: "Problème lors de la récupération du prizepool, veuillez contacter un administrateur." });
+                } else {
+                    return res.status(200).json({ prizePool: result.rows });
+                }
+            });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Un problème est survenu, veuillez contacter un administrateur." });
+        }
+    },
+    postCashPrice: (req, res) => {
+        try {
+            const prizePool = req.body.prizePool;
+
+            dataMapper.postPrizePool(prizePool, (error, result) => {
+                if (!result) {
+                    console.error(error);
+                    return res.status(500).json({ message: "Problème lors de la création du prizepool, veuillez contacter un administrateur." });
+                } else {
+                    console.log("prize pool ajouté avec succès.")
+                    return res.status(200).json({ prizePool: result.rows[0] })
+                }
+            });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Un problème est survenu, veuillez contacter un administrateur." });
+        }
+    },
+    deletePrizePool: (req, res) => {
+        try {
+            const tournamentId = req.params.tournamentId;
+            dataMapper.deletePrizePool(tournamentId, (error, result) => {
+                if (!result) {
+                    console.log(error);
+                    return res.status(500).json({ message: "Prize pool supprimé(s) avec succès." })
+                } else {
+                    return res.status(200).end();
+                }
+            });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Un problème est survenu, veuillez contacter un administrateur." });
+        }
+
     },
 }

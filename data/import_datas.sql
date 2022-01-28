@@ -3,15 +3,8 @@ BEGIN;
 INSERT INTO "user" ("id", "username", "email", "password", "confirmationCode") VALUES
 (1, 'test', 'test@email.fr', '$2b$12$k38Q/3Jz4Z76TJdShmcBD.91F8fn0hZrhXJuXaB5HmsrSmiZl8cVm', 'activated');
 
-INSERT INTO "tournament" ("id", "name", "date", "location", "nb_players", "speed", "starting_stack", "buy_in", "status", "small_blind", "chips_user", "comments", "user_id") VALUES
-(1, 'Tournoi 1', '2021-06-13T11:00:11.832Z', 'Chez Yann', 6, 20, 1500, 0, 'terminé', 10, false, '', 1),
-(2, 'Tournoi 2', '2021-04-17T20:30:00.832Z', 'Chez Yann ou chez françoise', 8, 15, 2000, 10, 'terminé', 10, false, '', 1),
-(3, 'Tournoi 3', '2021-07-31T19:30:00.832Z', 'Chez Yann', 6, 25, 3000, 20, 'prévu', 10, false, 'ici je mets mon commentaire du tournoi 3 pour ne pas oublier qque chose', 1),
-(4, 'Tournoi 4', '2021-11-27T20:00:00.832Z', '22 rue Charles de Gaulle, 33720 Bordeaux', 10, 30, 1250, 10, 'prévu', 10, false, 'ici je mets mon commentaire du tournoi 4 pour ne pas oublier qque chose', 1),
-(5, 'Tournoi 5', '2021-08-07T19:30:00.832Z', 'Casino Royal, 18 rue de la Marne, 45000 Orléans', 6, 25, 3000, 20, 'prévu', 10, true, 'ici je mets mon commentaire du tournoi 5 pour ne pas oublier qque chose', 1),
-(6, 'Tournoi 6', '2021-08-14T18:00:00.832Z', 'Chez Yann', 10, 30, 1250, 10, 'prévu', 10, false, 'ici je mets mon commentaire du tournoi 6 pour ne pas oublier qque chose', 1),
-(7, 'Tournoi 7', '2021-09-11T19:00:00.832Z', 'Chez Yann', 6, 25, 3000, 20, 'prévu', 10, true, 'ici je mets mon commentaire du tournoi 7 pour ne pas oublier qque chose', 1),
-(8, 'Tournoi 8', '2021-09-25T19:00:00.832Z', 'Chez Yann', 10, 30, 1250, 10, 'prévu', 10, false, 'ici je mets mon commentaire du tournoi 8 pour ne pas oublier qque chose', 1);
+INSERT INTO "tournament" ("id", "name", "date", "location", "nb_players", "speed", "starting_stack", "buy_in", "status", "small_blind", "rebuy", "chips_user", "comments", "user_id") VALUES
+(1, 'Tournoi 1', '2021-06-13T11:00:11.832Z', 'Chez Yann', 6, 20, 1500, 0, 'terminé', 10, '1H00', false, '', 1);
 
 INSERT INTO "structure" ("id", "stage", "small_blind", "big_blind", "tournament_id") VALUES
 (1, 1, 10, 20, 1),
